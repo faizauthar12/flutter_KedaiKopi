@@ -159,8 +159,11 @@ class _MyHomePageState extends State<MyHomePage> {
             tag: serving[index].tag,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DetailPage(serve: serving[index])));
               },
               child: Container(
                 height: 250,

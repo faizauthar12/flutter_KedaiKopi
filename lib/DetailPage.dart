@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 class DetailPage extends StatefulWidget {
-  DetailPage({Key key}) : super(key: key);
+  final Serve serve;
+  DetailPage({Key key, this.serve}) : super(key: key);
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -12,14 +14,13 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Hero(
-        tag: '1',
+        tag: widget.serve.tag,
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/one.jpg'),
-                  fit: BoxFit.cover),
+                  image: AssetImage(widget.serve.image), fit: BoxFit.cover),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey[400],
@@ -67,14 +68,14 @@ class _DetailPageState extends State<DetailPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        "Espresso",
+                        widget.serve.title,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 50,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Rp.20.000,-",
+                        "Rp." + widget.serve.price.toString() + ",-",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
