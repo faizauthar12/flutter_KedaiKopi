@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kedai_kopi/DetailPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -157,7 +158,10 @@ class _MyHomePageState extends State<MyHomePage> {
           return Hero(
             tag: menus[index].tag,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailPage()));
+              },
               child: Container(
                 height: 250,
                 width: double.infinity,
