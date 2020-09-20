@@ -34,13 +34,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Menu {
+class Serve {
   final String category;
   final String title;
   final int price;
   final String image;
   final String tag;
-  Menu({this.category, this.title, this.price, this.image, this.tag});
+  Serve({this.category, this.title, this.price, this.image, this.tag});
 }
 
 class MyHomePage extends StatefulWidget {
@@ -61,57 +61,57 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Menu> menus = [
-    Menu(
+  final List<Serve> serving = [
+    Serve(
       category: "minuman",
       title: "Espresso",
       price: 20000,
       image: 'assets/images/one.jpg',
       tag: '1',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Machiato",
       price: 50000,
       image: 'assets/images/one.jpg',
       tag: '2',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Capuccino",
       price: 30000,
       image: 'assets/images/one.jpg',
       tag: '3',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Cupertino",
       price: 15000,
       image: 'assets/images/one.jpg',
       tag: '4',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Juice",
       price: 20000,
       image: 'assets/images/one.jpg',
       tag: '5',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Blass",
       price: 20000,
       image: 'assets/images/one.jpg',
       tag: '6',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Bliss",
       price: 20000,
       image: 'assets/images/one.jpg',
       tag: '7',
     ),
-    Menu(
+    Serve(
       category: "minuman",
       title: "Hi",
       price: 20000,
@@ -152,11 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: menus.length,
+        itemCount: serving.length,
         padding: EdgeInsets.all(15),
         itemBuilder: (context, index) {
           return Hero(
-            tag: menus[index].tag,
+            tag: serving[index].tag,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: AssetImage(
-                      menus[index].image,
+                      serving[index].image,
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -198,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: 5,
                               ),
                               Text(
-                                menus[index].category,
+                                serving[index].category,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: 1,
                               ),
                               Text(
-                                menus[index].title,
+                                serving[index].title,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -218,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     Text(
-                      "Rp." + menus[index].price.toString() + ",-",
+                      "Rp." + serving[index].price.toString() + ",-",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
