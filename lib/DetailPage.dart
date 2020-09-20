@@ -126,16 +126,17 @@ class _DetailPageState extends State<DetailPage> {
                       Row(
                         children: <Widget>[],
                       ),
-                      Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Pesan Sekarang",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                      RaisedButton(
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Container(
+                          height: 50,
+                          child: Center(
+                            child: Text(
+                              "Pesan Sekarang",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
