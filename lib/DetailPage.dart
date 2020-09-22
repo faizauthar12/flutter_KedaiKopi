@@ -10,6 +10,17 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  // isSelected boolean for penyajian, Panas as the default selected button
+  List<bool> isSelected;
+  @override
+  void initState() {
+    super.initState();
+    isSelected = [
+      true,
+      false,
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,39 +95,40 @@ class _DetailPageState extends State<DetailPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        "Penyajian",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
                       Row(
                         children: <Widget>[
-                          Container(
-                            width: 80,
-                            height: 60,
-                            margin: EdgeInsets.only(right: 20),
-                            child: Center(
-                              child: Text(
-                                "Panas",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                          Text(
+                            "Penyajian",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                          Container(
-                            width: 80,
-                            height: 60,
-                            margin: EdgeInsets.only(right: 20),
-                            child: Center(
-                              child: Text(
-                                "Dingin",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                          Spacer(),
+                          ToggleButtons(
+                            children: <Widget>[
+                              Text("Panas"),
+                              Text("Dingin"),
+                            ],
+                            onPressed: (int index) {
+                              setState(() {
+                                // create OR logic gates
+                                for (int buttonIndex = 0;
+                                    buttonIndex < isSelected.length;
+                                    buttonIndex++) {
+                                  if (buttonIndex == index) {
+                                    isSelected[buttonIndex] = true;
+                                  } else {
+                                    isSelected[buttonIndex] = false;
+                                  }
+                                }
+                              });
+                            },
+                            // cosmetic for toggle button
+                            borderRadius: BorderRadius.circular(10),
+                            renderBorder: false,
+                            fillColor: Colors.white,
+                            color: Colors.white,
+                            selectedColor: Colors.black,
+                            selectedBorderColor: Colors.white,
+                            isSelected: isSelected,
                           ),
                         ],
                       ),
