@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:kedai_kopi/DetailPage.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'Animation/FadeAnimation.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -152,88 +154,91 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: serving.length,
-        padding: EdgeInsets.all(15),
-        itemBuilder: (context, index) {
-          return Hero(
-            tag: serving[index].tag,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) =>
-                            DetailPage(serve: serving[index])));
-              },
-              child: Container(
-                height: 250,
-                width: double.infinity,
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.only(bottom: 30),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    image: AssetImage(
-                      serving[index].image,
+      body: FadeAnimation(
+        1,
+        ListView.builder(
+          itemCount: serving.length,
+          padding: EdgeInsets.all(15),
+          itemBuilder: (context, index) {
+            return Hero(
+              tag: serving[index].tag,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) =>
+                              DetailPage(serve: serving[index])));
+                },
+                child: Container(
+                  height: 250,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(20),
+                  margin: EdgeInsets.only(bottom: 30),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        serving[index].image,
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[400],
+                        blurRadius: 10,
+                        offset: Offset(0, 10),
+                      )
+                    ],
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey[400],
-                      blurRadius: 10,
-                      offset: Offset(0, 10),
-                    )
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                serving[index].category,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 1,
-                              ),
-                              Text(
-                                serving[index].title,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ],
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  serving[index].category,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 1,
+                                ),
+                                Text(
+                                  serving[index].title,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "Rp." + serving[index].price.toString() + ",-",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                        ],
+                      ),
+                      Text(
+                        "Rp." + serving[index].price.toString() + ",-",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
