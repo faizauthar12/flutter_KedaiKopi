@@ -107,8 +107,28 @@ class _DetailPageState extends State<DetailPage> {
                             Spacer(),
                             ToggleButtons(
                               children: <Widget>[
-                                Text("Panas"),
-                                Text("Dingin"),
+                                Container(
+                                  width: 60,
+                                  margin: EdgeInsets.only(right: 5, left: 5),
+                                  child: Center(
+                                    child: Text(
+                                      "Panas",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 60,
+                                  margin: EdgeInsets.only(right: 5, left: 5),
+                                  child: Center(
+                                    child: Text(
+                                      "Dingin",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
                               ],
                               onPressed: (int index) {
                                 setState(() {
@@ -137,9 +157,6 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(
                           height: 60,
-                        ),
-                        Row(
-                          children: <Widget>[],
                         ),
                         RaisedButton(
                           onPressed: () {},
