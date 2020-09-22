@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:kedai_kopi/DetailPage.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(MyApp());
@@ -161,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    CupertinoPageRoute(
                         builder: (context) =>
                             DetailPage(serve: serving[index])));
               },
