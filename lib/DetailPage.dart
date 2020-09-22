@@ -159,7 +159,31 @@ class _DetailPageState extends State<DetailPage> {
                           height: 60,
                         ),
                         RaisedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            // dialog to get receipt
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text("Rincian"),
+                                content: Text("Kamu yakin ingin membeli " +
+                                    widget.serve.title +
+                                    " dengan penyajian pilihan penyajian yang kamu inginkan?"),
+                                actions: [
+                                  FlatButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("No")),
+                                  FlatButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("Yes")),
+                                ],
+                              ),
+                              barrierDismissible: true,
+                            );
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
                           child: Container(
